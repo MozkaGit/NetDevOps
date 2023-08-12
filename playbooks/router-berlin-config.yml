@@ -8,7 +8,7 @@
           - name: Ethernet0/1
             description: Configured and Replaced by Ansible Network
             enabled: true
-            speed: 1000
+            speed: 100
         state: replaced
 
     - name: Replaces device configuration of listed interfaces with provided configuration
@@ -17,7 +17,7 @@
           - name: Ethernet0/2
             description: Configured and Replaced by Ansible Network
             enabled: true
-            speed: 1000
+            speed: 100
         state: replaced
 
     - name: Replaces device configuration of listed interfaces with provided configuration
