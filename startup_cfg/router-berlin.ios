@@ -11,9 +11,9 @@ username cisco privilege 15 secret cisco
 !
 ip domain-name mozkagit.com
 !
-crypto key generate rsa modulus 1024
-!
 hostname Router-Berlin
+!
+crypto key generate rsa modulus 1024
 !
 ip ssh version 2
 !
