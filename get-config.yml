@@ -1,7 +1,7 @@
 ---
 - name: Get network config
-  connection: local
-  gather_facts: false
+  # connection: local
+  # gather_facts: false
   hosts: routers
   tasks:
     - name: Run sh version and sh ip interface br
@@ -9,6 +9,6 @@
         commands:
           - show version | include IOS
           - show ip interface brief 
-    #   register: output
+      register: output
 
-    # - debug: var=output.stdout_lines
+    - debug: var=output.stdout_lines
