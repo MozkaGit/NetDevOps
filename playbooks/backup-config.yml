@@ -5,13 +5,14 @@
   vars_files:
     - ../files/secrets/credentials.vault
   tasks:
-    - name: Execute show run command 
-      ios_command:
+    - name: Execute show run command
+      cisco.ios.ios_command:
         commands:
-          - show run 
-        register: config
+          - show run
+      register: config
 
-    - name: save output to ../files/backups
-      copy: 
+    - name: Save output
+      ansible.builtin.copy:
         content: "{{ config.stdout[0] }}"
         dest: "../files/backups/backup_{{ inventory_hostname }}.txt"
+        mode: '0600'

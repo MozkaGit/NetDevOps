@@ -5,10 +5,12 @@
     - ../files/secrets/credentials.vault
   tasks:
     - name: Run sh version and sh ip interface br
-      ios_command:
+      cisco.ios.ios_command:
         commands:
           - show version | include IOS
-          - show ip interface brief 
+          - show ip interface brief
       register: output
 
-    - debug: var=output.stdout_lines
+    - name: Print output
+      ansible.legacy.debug:
+        var: output.stdout_lines
