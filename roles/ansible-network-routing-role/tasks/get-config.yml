@@ -1,0 +1,11 @@
+---
+- name: Run sh version and sh ip interface br
+  cisco.ios.ios_command:
+    commands:
+      - show version | include IOS
+      - show ip interface brief
+  register: output
+
+- name: Print output
+  ansible.legacy.debug:
+    var: output.stdout_lines
