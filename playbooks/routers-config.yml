@@ -1,5 +1,6 @@
 ---
 - name: Configure interfaces and ip routes
+  gather_facts: false
   hosts: router-berlin
   vars_files:
     - ../files/secrets/credentials.vault
