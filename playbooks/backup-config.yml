@@ -1,0 +1,17 @@
+---
+- name: Backup routers config
+  gather_facts: false
+  hosts: routers
+  vars_files:
+    - ../files/secrets/credentials.vault
+  tasks:
+    - name: Execute show run command 
+      ios_command:
+        commands:
+          - show run 
+        register: config
+
+    - name: save output to ../files/backups
+      copy: 
+        content: "{{ config.stdout[0] }}"
+        dest: "../files/backups/backup_{{ inventory_hostname }}.txt"
