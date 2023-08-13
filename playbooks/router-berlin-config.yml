@@ -2,7 +2,7 @@
 - name: Configure interfaces and ip routes
   hosts: router-berlin
   vars_files:
-    - files/secrets/credentials.vault
+    - ../files/secrets/credentials.vault
   tasks:
     - name: Replaces device configuration of listed interfaces with provided configuration
       cisco.ios.ios_interfaces:

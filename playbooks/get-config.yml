@@ -2,7 +2,7 @@
 - name: Get network config
   hosts: routers
   vars_files:
-    - files/secrets/credentials.vault
+    - ../files/secrets/credentials.vault
   tasks:
     - name: Run sh version and sh ip interface br
       ios_command:
