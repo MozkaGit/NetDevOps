@@ -1,0 +1,9 @@
+routers:
+  hosts:
+    router-berlin:
+      ansible_host: 10.199.199.100
+    router-paris:
+      ansible_host: 10.199.199.200
+  vars:
+    ansible_network_os: ios
+    ansible_connection: network_cli

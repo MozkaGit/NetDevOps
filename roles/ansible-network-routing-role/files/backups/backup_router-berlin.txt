@@ -1,0 +1,124 @@
+Building configuration...
+
+Current configuration : 1311 bytes
+!
+! Last configuration change at 16:26:43 UTC Sun Aug 13 2023 by cisco
+!
+version 15.5
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname Router-Berlin
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+!
+!
+!
+bsd-client server url https://cloudsso.cisco.com/as/token.oauth2
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+
+
+!
+!
+!
+!
+ip domain name mozkagit.com
+ip cef
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+!
+cts logging verbose
+!
+!
+username cisco privilege 15 secret 5 $1$tkXZ$p8654Slg8GSGcof8S/qee0
+!
+redundancy
+!
+!
+ip ssh version 2
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Ethernet0/0
+ ip address 10.199.199.100 255.255.255.0
+!
+interface Ethernet0/1
+ description WAN interface
+ ip address 172.16.1.100 255.255.255.0
+!
+interface Ethernet0/2
+ description LAN interface
+ ip address 192.168.1.100 255.255.255.0
+!
+interface Ethernet0/3
+ no ip address
+ shutdown
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+ip route 10.154.0.0 255.255.255.0 10.199.199.1
+ip route 192.168.2.0 255.255.255.0 172.16.1.200
+!
+!
+!
+!
+control-plane
+!
+!
+!
+!
+!
+!
+!
+!
+line con 0
+ logging synchronous
+line aux 0
+line vty 0 4
+ login local
+ transport input ssh
+!
+!
+end
