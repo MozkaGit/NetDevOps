@@ -1,30 +1,19 @@
 ---
-- name: Playbook test
-  hosts: routers
-  remote_user: cisco
+- name: Ping IP addresses
+  hosts: localhost
   gather_facts: false
-  vars_files:
-    - ../files/secrets/credentials.vault
   tasks:
     - name: Test reachability of Berlin subnet
-      cisco.ios.ios_ping:
-        dest: 192.168.1.100
-      register: berlin
+      ansible.builtin.raw: ping 192.168.1.100
 
     - name: Test reachability of Paris subnet
-      cisco.ios.ios_ping:
-        dest: 192.168.2.100
-      register: paris
+      ansible.builtin.raw: ping 192.168.2.100
 
     - name: Test reachability of WAN interface
-      cisco.ios.ios_ping:
-        dest: 172.16.1.100
-      register: wan1
+      ansible.builtin.raw: ping 172.16.1.100
 
     - name: Test reachability of WAN interface
-      cisco.ios.ios_ping:
-        dest: 172.16.1.200
-      register: wan2
+      ansible.builtin.raw: ping 172.16.1.200
 
     - name: Print outputs
       ansible.builtin.debug:
