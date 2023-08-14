@@ -40,7 +40,7 @@ The network architecture comprises two routers, the Paris and Berlin headquarter
 
 ## Configuration Process
 
-1. Minimal manual configuration: Initially, a minimal manual configuration must be applied to allow Ansible to use SSH on the router (in my case I use eth0/0 interfaces on each routers). You can use my start-up config files as inspiration for your initial configuration.
+1. Minimal manual configuration: Initially, a minimal manual configuration must be applied to allow Ansible to use SSH on the router (in my case I use eth0/0 interfaces on each routers). You can refer to my start-up config files as an inspiration for your initial configuration.
 2. Ansible Automation: Ansible is used to automate the ip configuration of the routers interfaces (eth0/1 and eth0/2 in my case, as these are the interfaces through which communication occurs).
 3. Berlin Router: The route configuration for Berlin involves adding the route "ip route 192.168.2.0 255.255.255.0 172.16.1.200".
 4. Paris Router: The route configuration for Paris includes "ip route 192.168.1.0 255.255.255.0 172.16.1.100".
