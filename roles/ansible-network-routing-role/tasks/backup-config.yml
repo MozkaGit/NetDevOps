@@ -8,5 +8,5 @@
 - name: Save output
   ansible.builtin.copy:
     content: "{{ config.stdout[0] }}"
-    dest: "roles/ansible-network-routing-role/files/backups/backup_{{ inventory_hostname }}.txt"
+    dest: "roles/ansible-network-routing-role/files/backups/backup_{{ inventory_hostname }}.ios"
     mode: '0600'
