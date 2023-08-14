@@ -1,7 +1,5 @@
 ---
 - hosts: routers
   gather_facts: false
-  vars_files:
-    - roles/ansible-network-routing-role/files/secrets/credentials.vault
   roles:
     - ansible-network-routing-role
