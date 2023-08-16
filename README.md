@@ -72,4 +72,7 @@ The network architecture comprises two routers, the Paris and Berlin headquarter
 
     We can now confirm if the communication is set between the two sites:
 
+   <img width="697" alt="SCR-20230814-ceyy" src="https://github.com/MozkaGit/ansible-network-routing/assets/43102748/5cf8f5bc-2d13-4765-a075-5ab66e49dbad">
+
+
 The successful execution of the playbooks and the verification of the configurations will demonstrate the functionality of my Ansible role for automating the interface and route configurations.
