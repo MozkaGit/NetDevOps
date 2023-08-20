@@ -2,7 +2,7 @@ Building configuration...
 
 Current configuration : 1311 bytes
 !
-! Last configuration change at 00:04:46 UTC Sun Aug 20 2023 by cisco
+! Last configuration change at 16:15:09 UTC Sun Aug 20 2023 by cisco
 !
 version 15.5
 service timestamps debug datetime msec
@@ -59,7 +59,7 @@ multilink bundle-name authenticated
 cts logging verbose
 !
 !
-username cisco privilege 15 secret 5 $1$/i7I$IyM5MaPEgzI1lc.N6UaAD0
+username cisco privilege 15 secret 5 $1$maF6$hmxR3DJbn3pBaphQaQuNi.
 !
 redundancy
 !
