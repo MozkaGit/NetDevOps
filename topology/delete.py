@@ -22,7 +22,7 @@ if start_api.status_code == 200:
 else:
     print("Nodes shutdown failure. Status Code:", start_api.status_code)
 
-time.sleep(2.5)
+time.sleep(3)
 
 ###### Delete Topology
 lab_url = 'http://10.154.0.12/api/labs/Test%20-%20Network%20Automation%20Routing.unl'
