@@ -24,6 +24,17 @@ else:
 
 time.sleep(3)
 
+####### Delete all Nodes
+url_berlin = "http://10.154.0.12/api/labs/Test%20-%20Network%20Automation%20Routing.unl/nodes/1"
+delete_berlin = requests.delete(url=url_berlin,cookies=cookies)
+response = delete_berlin.json()
+
+url_paris = "http://10.154.0.12/api/labs/Test%20-%20Network%20Automation%20Routing.unl/nodes/2"
+delete_paris = requests.delete(url=url_paris,cookies=cookies)
+response = delete_paris.json()
+
+time.sleep(1)
+
 ###### Delete Topology
 lab_url = 'http://10.154.0.12/api/labs/Test%20-%20Network%20Automation%20Routing.unl'
 delete_api = requests.delete(url=lab_url,cookies=cookies)
