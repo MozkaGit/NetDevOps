@@ -19,7 +19,10 @@ pipeline {
             }
             steps {
                 script {
-                    sh 'python3.9 topology/provisioning.py'
+                    sh '''
+                          pip3 install requests
+                          python3.9 topology/provisioning.py
+                    '''
                 }
             }
         }
@@ -49,7 +52,10 @@ pipeline {
             }
             steps {
                 script {
-                sh 'python3.9 topology/delete.py'
+                    sh '''
+                          pip3 install requests
+                          python3.9 topology/destroy.py
+                    '''
                 }
             }
         }
