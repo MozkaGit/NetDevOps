@@ -35,8 +35,8 @@ network_data = {
     "visibility": "1",
     "name": "MGMT",
     "type": "pnet1",
-    "left": "676",
-    "top": "330",
+    "left": "873",
+    "top": "591",
     "postfix": 0
 }
 
@@ -52,8 +52,8 @@ network_data = {
     "visibility": "1",
     "name": "Bridge",
     "type": "bridge",
-    "left": "676",
-    "top": "330",
+    "left": "873",
+    "top": "258",
     "postfix": 0
 }
 
@@ -143,7 +143,7 @@ def telnet_initial(telnet_port):
 def device_config(device_name,telnet_port):
 	TELNET_TIMEOUT = 10
 	tn = Telnet(host='10.154.0.12', port=telnet_port, timeout=TELNET_TIMEOUT)
-	with open(f"../startup_cfg/{device_name}.ios", 'r') as cmd_file:
+	with open(f"topology/startup_cfg/{device_name}.ios", 'r') as cmd_file:
 		for cmd in cmd_file.readlines():
 			cmd = cmd.strip('\r\n')
 			tn.write(cmd.encode()+ b'\r')
