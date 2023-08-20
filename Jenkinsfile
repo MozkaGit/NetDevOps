@@ -28,7 +28,7 @@ pipeline {
         }
         stage('Run playbook') {
             agent {
-                docker { image 'webdevops/ansible' }
+                docker { image 'cytopia/ansible:latest-tools' }
             }
             steps {
                 script {
@@ -38,7 +38,7 @@ pipeline {
         }
         stage('Run tests reachability') {
             agent {
-                docker { image 'webdevops/ansible' }
+                docker { image 'cytopia/ansible:latest-tools' }
             }
             steps {
                 script {
