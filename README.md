@@ -2,6 +2,8 @@
 
 The goal of this project is to automate the configuration of Ethernet interfaces for the Paris and Berlin headquarters routers, along with setting up default routes to enable seamless communication between the two sites. This automation is achieved using Ansible, a powerful configuration management and automation tool.
 
+![build - passing](https://img.shields.io/badge/build-passing-2ea44f?logo=jenkins&logoColor=%2373C3D5)
+
 ## Prerequisites
 
 - Ansible server (mine is running on CentOS 7).
