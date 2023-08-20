@@ -29,9 +29,21 @@ url_berlin = "http://10.154.0.12/api/labs/Test%20-%20Network%20Automation%20Rout
 delete_berlin = requests.delete(url=url_berlin,cookies=cookies)
 response = delete_berlin.json()
 
+if delete_berlin.status_code == 200:
+    print("Berlin router has been correctly deleted.")
+    print(response)
+else:
+    print("Node deletion failure. Status Code:", delete_berlin.status_code)
+
 url_paris = "http://10.154.0.12/api/labs/Test%20-%20Network%20Automation%20Routing.unl/nodes/2"
 delete_paris = requests.delete(url=url_paris,cookies=cookies)
 response = delete_paris.json()
+
+if delete_paris.status_code == 200:
+    print("Paris router has been correctly deleted.")
+    print(response)
+else:
+    print("Node deletion failure. Status Code:", delete_paris.status_code)
 
 time.sleep(1)
 
