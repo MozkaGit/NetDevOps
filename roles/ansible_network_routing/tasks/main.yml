@@ -1,0 +1,10 @@
+---
+# tasks file for ansible-network-routing-role
+- name: Include network configuration task
+  ansible.legacy.include_tasks: "routers-config.yml"
+
+- name: Include display configuration task
+  ansible.legacy.include_tasks: "get-config.yml"
+
+- name: Include backup configuration task
+  ansible.legacy.include_tasks: "backup-config.yml"

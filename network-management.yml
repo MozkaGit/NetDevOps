@@ -1,5 +1,6 @@
 ---
-- hosts: routers
+- name: Network configuration orchestration playbook
+  hosts: routers
   gather_facts: false
   roles:
-    - ansible-network-routing-role
+    - ansible_network_routing
