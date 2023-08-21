@@ -73,6 +73,9 @@ pipeline {
             }
         }
         stage('Lint Playbook files for prod env') {
+            when {
+                expression { GIT_BRANCH == 'origin/main' }
+            }
             agent {
                 docker { image 'pipelinecomponents/ansible-lint' }
             }
@@ -83,6 +86,9 @@ pipeline {
             }
         }
         stage('Start the production network environment') {
+            when {
+                expression { GIT_BRANCH == 'origin/main' }
+            }
             agent {
                 docker { image 'python:3.9.17' }
             }
@@ -97,6 +103,9 @@ pipeline {
             }
         }
         stage('Run playbook in prod env') {
+            when {
+                expression { GIT_BRANCH == 'origin/main' }
+            }
             agent {
                 docker { image 'cytopia/ansible:latest-tools' }
             }
@@ -107,6 +116,9 @@ pipeline {
             }
         }
         stage('Run tests reachability in prod env') {
+            when {
+                expression { GIT_BRANCH == 'origin/main' }
+            }
             agent {
                 docker { image 'cytopia/ansible:latest-tools' }
             }
