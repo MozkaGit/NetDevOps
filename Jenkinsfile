@@ -3,7 +3,7 @@ pipeline {
     // }
     agent none
     stages {
-        stage('Lint Playbook files') {
+        stage('Lint Playbook files in test env') {
             agent {
                 docker { image 'pipelinecomponents/ansible-lint' }
             }
@@ -26,7 +26,7 @@ pipeline {
                 }
             }
         }
-        stage('Run playbook') {
+        stage('Run playbook in test env') {
             agent {
                 docker { image 'cytopia/ansible:latest-tools' }
             }
@@ -36,7 +36,7 @@ pipeline {
                 }
             }
         }
-        stage('Run tests reachability') {
+        stage('Run tests reachability in test env') {
             agent {
                 docker { image 'cytopia/ansible:latest-tools' }
             }
@@ -59,24 +59,23 @@ pipeline {
                 }
             }
         }
-        // stage('Merge to master') {
-        //     agent {
-        //         docker { image 'bitnami/git' }
-        //     }
-        //     steps {
-        //         script {
-        //             sh '''
-        //             git config --global user.email "mozka@git.com"
-        //             git config --global user.name "MozkaGit"
-        //             git checkout -B main
-        //             git commit -am "[Jenkins CD] Merge to master"
-        //             git (ajouter ici une commande pour les credentials)
-        //             git push origin HEAD:main
-        //             '''
-        //         }
-        //     }
-        // }
-        stage('Lint Playbook files') {
+        stage('Merge to master') {
+            agent {
+                docker { image 'bitnami/git' }
+            }
+            steps {
+                script {
+                    sh '''
+                    git config --global user.email "mozka@git.com"
+                    git config --global user.name "MozkaGit"
+                    git commit -am "[Jenkins CD] Merge to master"
+                    git checkout main
+                    git merge dev
+                    '''
+                }
+            }
+        }
+        stage('Lint Playbook files for prod env') {
             agent {
                 docker { image 'pipelinecomponents/ansible-lint' }
             }
@@ -100,7 +99,7 @@ pipeline {
                 }
             }
         }
-        stage('Run playbook') {
+        stage('Run playbook in prod env') {
             agent {
                 docker { image 'cytopia/ansible:latest-tools' }
             }
@@ -110,7 +109,7 @@ pipeline {
                 }
             }
         }
-        stage('Run tests reachability') {
+        stage('Run tests reachability in prod env') {
             agent {
                 docker { image 'cytopia/ansible:latest-tools' }
             }
