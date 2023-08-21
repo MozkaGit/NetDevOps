@@ -66,16 +66,16 @@ pipeline {
             steps {
                 script {
                     sh '''
-                    git config --global user.email "mozka@git.com"
-                    git config --global user.name "MozkaGit"
-                    git commit -am "[Jenkins CD] Merge to master"
                     git checkout main
-                    git merge dev
+                    git merge origin/dev
                     '''
                 }
             }
         }
         stage('Lint Playbook files for prod env') {
+            when {
+                expression { GIT_BRANCH == 'origin/main' }
+            }
             agent {
                 docker { image 'pipelinecomponents/ansible-lint' }
             }
@@ -86,6 +86,9 @@ pipeline {
             }
         }
         stage('Start the production network environment') {
+            when {
+                expression { GIT_BRANCH == 'origin/main' }
+            }
             agent {
                 docker { image 'python:3.9.17' }
             }
@@ -100,6 +103,9 @@ pipeline {
             }
         }
         stage('Run playbook in prod env') {
+            when {
+                expression { GIT_BRANCH == 'origin/main' }
+            }
             agent {
                 docker { image 'cytopia/ansible:latest-tools' }
             }
@@ -110,6 +116,9 @@ pipeline {
             }
         }
         stage('Run tests reachability in prod env') {
+            when {
+                expression { GIT_BRANCH == 'origin/main' }
+            }
             agent {
                 docker { image 'cytopia/ansible:latest-tools' }
             }
