@@ -67,7 +67,7 @@ pipeline {
                 script {
                     sh '''
                     git checkout main
-                    git merge dev
+                    git merge origin/dev
                     '''
                 }
             }
