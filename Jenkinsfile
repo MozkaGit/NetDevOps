@@ -66,9 +66,6 @@ pipeline {
             steps {
                 script {
                     sh '''
-                    git config --global user.email "mozka@git.com"
-                    git config --global user.name "MozkaGit"
-                    git commit -am "[Jenkins CD] Merge to master"
                     git checkout main
                     git merge dev
                     '''
