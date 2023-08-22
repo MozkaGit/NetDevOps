@@ -140,7 +140,7 @@ pipeline {
         }
         aborted {
             discordSend (description: "NetDevOps pipeline aborted", title: "${JOB_NAME}", result: "ABORTED", webhookURL: "https://discord.com/api/webhooks/1143345873309413447/CP2upEWbggVA4T3vShFrz280xJhAHHkti_UVG0g5FPJ0ZWwD4B57MijN_TAagLbKRh-J")
-            slackSend (color: "#8c8e92", message: "Pipeline aborted")
+            slackSend (color: "#a1a4a9", message: "Pipeline aborted")
         }
     }
 }
