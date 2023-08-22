@@ -132,20 +132,15 @@ pipeline {
     post {
         success {
             discordSend (description: "Discord Notifier test succeed", title: "${JOB_NAME}", result: "green", webhookURL: "https://discord.com/api/webhooks/1143345873309413447/CP2upEWbggVA4T3vShFrz280xJhAHHkti_UVG0g5FPJ0ZWwD4B57MijN_TAagLbKRh-J")
-        }
-        failure {
-            discordSend (description: "Discord Notifier test failed", title: "${JOB_NAME}", result: "red", webhookURL: "https://discord.com/api/webhooks/1143345873309413447/CP2upEWbggVA4T3vShFrz280xJhAHHkti_UVG0g5FPJ0ZWwD4B57MijN_TAagLbKRh-J")
-        }
-        aborted {
-            discordSend (description: "Discord Notifier test aborted", title: "${JOB_NAME}", result: "grey", webhookURL: "https://discord.com/api/webhooks/1143345873309413447/CP2upEWbggVA4T3vShFrz280xJhAHHkti_UVG0g5FPJ0ZWwD4B57MijN_TAagLbKRh-J") 
-        }
-    }
-    post {
-        success {
             slackSend (color: "#028000", message: "Pipeline succeed")
         }
         failure {
+            discordSend (description: "Discord Notifier test failed", title: "${JOB_NAME}", result: "red", webhookURL: "https://discord.com/api/webhooks/1143345873309413447/CP2upEWbggVA4T3vShFrz280xJhAHHkti_UVG0g5FPJ0ZWwD4B57MijN_TAagLbKRh-J")
             slackSend (color: "#c70039", message: "Pipeline failed")
+        }
+        aborted {
+            discordSend (description: "Discord Notifier test aborted", title: "${JOB_NAME}", result: "grey", webhookURL: "https://discord.com/api/webhooks/1143345873309413447/CP2upEWbggVA4T3vShFrz280xJhAHHkti_UVG0g5FPJ0ZWwD4B57MijN_TAagLbKRh-J")
+            slackSend (color: "#8c8e92", message: "Pipeline aborted")
         }
     }
 }
