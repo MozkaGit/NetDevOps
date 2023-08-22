@@ -9,7 +9,7 @@
         description: LAN interface
         enabled: true
     state: replaced
-  when: "'{{ first_rtr }}' in inventory_hostname"
+  when: "'router-berlin' in inventory_hostname"
 
 - name: Replaces device configuration of listed interfaces with provided configuration
   cisco.ios.ios_l3_interfaces:
@@ -21,12 +21,12 @@
         ipv4:
           - address: "{{ first_lan_ip_subnet }}"
     state: replaced
-  when: "'{{ first_rtr }}' in inventory_hostname"
+  when: "'router-berlin' in inventory_hostname"
 
 - name: Configure ip route
   cisco.ios.ios_config:
     lines: "{{ first_ip_route }}"
-  when: "'{{ first_rtr }}' in inventory_hostname"
+  when: "'router-berlin' in inventory_hostname"
 
 - name: Replaces device configuration of listed interfaces with provided configuration
   cisco.ios.ios_interfaces:
@@ -38,7 +38,7 @@
         description: LAN interface
         enabled: true
     state: replaced
-  when: "'{{ second_rtr }}' in inventory_hostname"
+  when: "'router-paris' in inventory_hostname"
 
 - name: Replaces device configuration of listed interfaces with provided configuration
   cisco.ios.ios_l3_interfaces:
@@ -50,9 +50,9 @@
         ipv4:
           - address: "{{ second_lan_ip_subnet }}"
     state: replaced
-  when: "'{{ second_rtr }}' in inventory_hostname"
+  when: "'router-paris' in inventory_hostname"
 
 - name: Configure ip route
   cisco.ios.ios_config:
     lines: "{{ second_ip_route }}"
-  when: "'{{ second_rtr }}' in inventory_hostname"
+  when: "'router-paris' in inventory_hostname"
