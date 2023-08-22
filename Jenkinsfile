@@ -67,7 +67,7 @@ pipeline {
                 script {
                     sh '''
                     git checkout main
-                    git merge origin/dev
+                    git merge ${BRANCH_NAME}
                     '''
                 }
             }
