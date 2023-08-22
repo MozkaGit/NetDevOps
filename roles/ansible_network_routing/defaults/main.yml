@@ -1,2 +1,29 @@
 ---
 # defaults file for ansible-network-routing-role
+first_rtr: 'Router-Berlin'
+second_rtr: Router-Paris
+
+first_wan_interface: Ethernet0/1
+first_lan_interface: Ethernet0/2
+
+second_wan_interface: Ethernet0/1
+second_lan_interface: Ethernet0/2
+
+first_wan_ip_subnet: 172.16.1.100/24
+first_lan_ip_subnet: 192.168.1.100/24
+
+second_wan_ip_subnet: 172.16.1.200/24
+second_lan_ip_subnet: 192.168.2.100/24
+
+first_wan_ip_test: 172.16.1.100
+first_lan_ip_test: 192.168.1.100
+
+second_wan_ip_test: 172.16.1.200
+second_lan_ip_test: 192.168.2.100
+
+
+
+first_ip_route: ip route 192.168.2.0 255.255.255.0 172.16.1.200
+second_ip_route: ip route 192.168.1.0 255.255.255.0 172.16.1.100
+
+backups_destination: "roles/ansible_network_routing/files/backups/backup_{{ inventory_hostname }}.ios"
