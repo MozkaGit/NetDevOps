@@ -3,7 +3,7 @@ import requests
 import json
 import time
 
-login_url = 'http://10.154.0.19/api/auth/login'
+login_url = 'http://10.154.0.12/api/auth/login'
 cred = '{"username":"admin","password":"eve","html5":"-1"}'
 headers = {'Accept': 'application/json'}
 
@@ -12,7 +12,7 @@ cookies = login.cookies
 print(cookies)
 
 ####### Stop all Nodes
-url = "http://10.154.0.19/api/labs/Test%20-%20Network%20Automation%20Routing.unl/nodes/stop"
+url = "http://10.154.0.12/api/labs/Test%20-%20Network%20Automation%20Routing.unl/nodes/stop"
 start_api = requests.get(url,cookies=cookies)
 response = start_api.json()
 
@@ -22,10 +22,10 @@ if start_api.status_code == 200:
 else:
     print("Nodes shutdown failure. Status Code:", start_api.status_code)
 
-time.sleep(3)
+time.sleep(10)
 
 ####### Delete all Nodes
-url_berlin = "http://10.154.0.19/api/labs/Test%20-%20Network%20Automation%20Routing.unl/nodes/1"
+url_berlin = "http://10.154.0.12/api/labs/Test%20-%20Network%20Automation%20Routing.unl/nodes/1"
 delete_berlin = requests.delete(url=url_berlin,cookies=cookies)
 response = delete_berlin.json()
 
@@ -35,7 +35,7 @@ if delete_berlin.status_code == 200:
 else:
     print("Node deletion failure. Status Code:", delete_berlin.status_code)
 
-url_paris = "http://10.154.0.19/api/labs/Test%20-%20Network%20Automation%20Routing.unl/nodes/2"
+url_paris = "http://10.154.0.12/api/labs/Test%20-%20Network%20Automation%20Routing.unl/nodes/2"
 delete_paris = requests.delete(url=url_paris,cookies=cookies)
 response = delete_paris.json()
 
@@ -48,7 +48,7 @@ else:
 time.sleep(1)
 
 ###### Delete Topology
-lab_url = 'http://10.154.0.19/api/labs/Test%20-%20Network%20Automation%20Routing.unl'
+lab_url = 'http://10.154.0.12/api/labs/Test%20-%20Network%20Automation%20Routing.unl'
 delete_api = requests.delete(url=lab_url,cookies=cookies)
 response = delete_api.json()
 
