@@ -21,8 +21,6 @@ first_lan_ip_test: 192.168.1.100
 second_wan_ip_test: 172.16.1.200
 second_lan_ip_test: 192.168.2.100
 
-
-
 first_ip_route: ip route 192.168.2.0 255.255.255.0 172.16.1.200
 second_ip_route: ip route 192.168.1.0 255.255.255.0 172.16.1.100
 
