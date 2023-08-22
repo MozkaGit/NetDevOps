@@ -10,7 +10,7 @@ The goal of this project is to automate the configuration of Ethernet interfaces
 
 ## Automated Configuration
 
-To accomplish automated configuration, I created a dedicated Ansible role. This role contains tasks and templates to configure Ethernet interfaces and default routes on the Paris and Berlin headquarters routers.
+To accomplish automated configuration, I created a dedicated Ansible role. This role contains tasks and templates to configure interfaces and default routes on the Paris and Berlin headquarters routers.
 
 ## Project Files and Directory Structure
 
