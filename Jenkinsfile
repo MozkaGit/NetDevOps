@@ -65,14 +65,19 @@ pipeline {
                 docker { image 'bitnami/git' }
             }
             steps {
-                script {
-                    sh '''
-                    git checkout main
-                    git merge ${BRANCH_NAME}
-                    '''
+                sshagent(credentials: ['ssh-credentials']) {
+                    script {
+                        sh '''
+                        git checkout main
+                        git branch -u origin/main
+                        git merge ${BRANCH_NAME}
+                        git push origin main
+                        '''
+                    }
                 }
             }
         }
+
         stage('Lint Playbook files for prod env') {
             when {
                 expression { GIT_BRANCH == 'origin/main' }
@@ -88,8 +93,8 @@ pipeline {
         }
         stage('Start the production network environment') {
             environment {
-                EVE-NG_HOST = "http://10.154.0.19"
-                EVE-NG_CREDS = credentials('eve-ng-creds')
+                EVE_NG_HOST = "http://10.154.0.19"
+                EVE_NG_CREDS = credentials('eve-ng-creds')
             }
             when {
                 expression { GIT_BRANCH == 'origin/main' }
