@@ -1,6 +1,7 @@
 pipeline {
-    // environment {
-    // }
+    environment {
+        DISCORD_WEBHOOK_URL = "static-website"
+    }
     agent none
     stages {
         stage('Lint Playbook files in test env') {
@@ -86,6 +87,10 @@ pipeline {
             }
         }
         stage('Start the production network environment') {
+            environment {
+                EVE-NG_HOST = "http://10.154.0.19"
+                EVE-NG_CREDS = credentials('eve-ng-creds')
+            }
             when {
                 expression { GIT_BRANCH == 'origin/main' }
             }
@@ -95,9 +100,11 @@ pipeline {
             steps {
                 script {
                     sh '''
-                    curl -s -b /tmp/cookie -c /tmp/cookie -X POST -d '{"username":"admin","password":"eve"}' http://10.154.0.12/api/auth/login
-                    curl -s -c /tmp/cookie -b /tmp/cookie -X GET -H 'Content-type: application/json' http://10.154.0.12/api/labs/Prod%20-%20Network%20Automation%20Routing.unl/nodes/1/start
-                    curl -s -c /tmp/cookie -b /tmp/cookie -X GET -H 'Content-type: application/json' http://10.154.0.12/api/labs/Prod%20-%20Network%20Automation%20Routing.unl/nodes/2/start
+                    curl -s -b /tmp/cookie -c /tmp/cookie -X POST -d '{"username":"${EVE-NG_CREDS_USR}","password":"${EVE-NG_CREDS_PSW}"}' ${EVE-NG_HOST}/api/auth/login
+                    curl -s -c /tmp/cookie -b /tmp/cookie -X GET -H 'Content-type: application/json' ${EVE-NG_HOST}/api/labs/Prod%20-%20Network%20Automation%20Routing.unl/nodes/1/start
+                    curl -s -c /tmp/cookie -b /tmp/cookie -X GET -H 'Content-type: application/json' ${EVE-NG_HOST}/api/labs/Prod%20-%20Network%20Automation%20Routing.unl/nodes/2/start
+                    curl -s -c /tmp/cookie -b /tmp/cookie -X GET -H 'Content-type: application/json' ${EVE-NG_HOST}/api/labs/Prod%20-%20Network%20Automation%20Routing.unl/nodes/3/start
+                    curl -s -c /tmp/cookie -b /tmp/cookie -X GET -H 'Content-type: application/json' ${EVE-NG_HOST}/api/labs/Prod%20-%20Network%20Automation%20Routing.unl/nodes/4/start
                     '''
                 }
             }
@@ -131,15 +138,15 @@ pipeline {
     }
     post {
         success {
-            discordSend (description: "NetDevOps pipeline succeed", title: "${JOB_NAME}", result: "SUCCESS", webhookURL: "https://discord.com/api/webhooks/1143345873309413447/CP2upEWbggVA4T3vShFrz280xJhAHHkti_UVG0g5FPJ0ZWwD4B57MijN_TAagLbKRh-J")
+            discordSend (description: "NetDevOps pipeline succeed", title: "${JOB_NAME}", result: "SUCCESS", webhookURL: "${DISCORD_WEBHOOK_URL}")
             slackSend (color: "#028000", message: "Pipeline succeed")
         }
         failure {
-            discordSend (description: "NetDevOps pipeline failed", title: "${JOB_NAME}", result: "FAILURE", webhookURL: "https://discord.com/api/webhooks/1143345873309413447/CP2upEWbggVA4T3vShFrz280xJhAHHkti_UVG0g5FPJ0ZWwD4B57MijN_TAagLbKRh-J")
+            discordSend (description: "NetDevOps pipeline failed", title: "${JOB_NAME}", result: "FAILURE", webhookURL: "${DISCORD_WEBHOOK_URL}")
             slackSend (color: "#c70039", message: "Pipeline failed")
         }
         aborted {
-            discordSend (description: "NetDevOps pipeline aborted", title: "${JOB_NAME}", result: "ABORTED", webhookURL: "https://discord.com/api/webhooks/1143345873309413447/CP2upEWbggVA4T3vShFrz280xJhAHHkti_UVG0g5FPJ0ZWwD4B57MijN_TAagLbKRh-J")
+            discordSend (description: "NetDevOps pipeline aborted", title: "${JOB_NAME}", result: "ABORTED", webhookURL: "${DISCORD_WEBHOOK_URL}")
             slackSend (color: "#8c8e92", message: "Pipeline aborted")
         }
     }
