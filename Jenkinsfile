@@ -95,9 +95,9 @@ pipeline {
             steps {
                 script {
                     sh '''
-                    curl -s -b /tmp/cookie -c /tmp/cookie -X POST -d '{"username":"admin","password":"eve"}' http://10.154.0.12/api/auth/login
-                    curl -s -c /tmp/cookie -b /tmp/cookie -X GET -H 'Content-type: application/json' http://10.154.0.12/api/labs/Prod%20-%20Network%20Automation%20Routing.unl/nodes/1/start
-                    curl -s -c /tmp/cookie -b /tmp/cookie -X GET -H 'Content-type: application/json' http://10.154.0.12/api/labs/Prod%20-%20Network%20Automation%20Routing.unl/nodes/2/start
+                    curl -s -b /tmp/cookie -c /tmp/cookie -X POST -d '{"username":"admin","password":"eve"}' http://10.154.0.19/api/auth/login
+                    curl -s -c /tmp/cookie -b /tmp/cookie -X GET -H 'Content-type: application/json' http://10.154.0.19/api/labs/Prod%20-%20Network%20Automation%20Routing.unl/nodes/1/start
+                    curl -s -c /tmp/cookie -b /tmp/cookie -X GET -H 'Content-type: application/json' http://10.154.0.19/api/labs/Prod%20-%20Network%20Automation%20Routing.unl/nodes/2/start
                     '''
                 }
             }
