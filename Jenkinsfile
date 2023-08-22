@@ -1,6 +1,6 @@
 pipeline {
     environment {
-        DISCORD_WEBHOOK_URL = "static-website"
+        DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/1143345873309413447/CP2upEWbggVA4T3vShFrz280xJhAHHkti_UVG0g5FPJ0ZWwD4B57MijN_TAagLbKRh-J"
     }
     agent none
     stages {
