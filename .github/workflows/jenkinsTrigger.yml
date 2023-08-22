@@ -14,6 +14,6 @@ jobs:
       uses: appleboy/jenkins-action@master
       with:
         url: "http://34.142.72.59"
-        user: "example"
+        user: "MozkaGit"
         token: ${{ secrets.JENKINS }}
         job: "NetDevOps"
