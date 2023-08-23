@@ -71,6 +71,7 @@ pipeline {
                         git checkout main
                         git branch -u origin/main
                         git merge ${BRANCH_NAME}
+                        git remote set-url origin git@github.com:MozkaGit/ansible-network-routing.git
                         git push origin main
                         '''
                     }
