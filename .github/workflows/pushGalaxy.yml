@@ -1,0 +1,16 @@
+---
+name: GitHub Action
+
+on:
+  - push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3.6.0
+      - name: galaxy
+        uses: robertdebock/galaxy-action@1.2.1
+        with:
+          galaxy_api_key: ${{ secrets.GALAXY_API_KEY }}
