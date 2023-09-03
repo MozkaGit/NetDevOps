@@ -1,4 +1,4 @@
-# Automated Configuration of Ethernet Interfaces and Default Routes using Ansible<br>![build - passing](https://img.shields.io/badge/build-passing-2ea44f?logo=jenkins&logoColor=%2373C3D5)
+# Automated Configuration of Ethernet Interfaces and Default Routes using Ansible<br>![build - passing](https://img.shields.io/badge/build-passing-2ea44f?logo=jenkins&logoColor=%2373C3D5) [![Push to Galaxy](https://github.com/MozkaGit/Ansible_NetDevOps_role/actions/workflows/push_to_galaxy.yml/badge.svg)](https://github.com/MozkaGit/Ansible_NetDevOps_role/actions/workflows/push_to_galaxy.yml)
 
 The goal of this project is to automate the configuration of Ethernet interfaces for the Paris and Berlin headquarters routers, along with setting up default routes to enable seamless communication between the two sites. This automation is achieved using Ansible, a powerful configuration management and automation tool.
 
