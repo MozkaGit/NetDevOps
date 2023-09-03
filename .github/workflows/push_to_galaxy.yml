@@ -15,4 +15,4 @@ jobs:
         with:
           galaxy_api_key: ${{ secrets.GALAXY_API_KEY }}
           git_branch: main
-          path: ./*
+          path: roles/*
